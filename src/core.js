@@ -6,14 +6,18 @@ function isInteger(n) {
 //Напишите функцию, которая возвращает массив четных чисел от 2 до 20 включительно
 function even() {
     let mas = [];
-    for (let x = 2; x < 21; x += 2, mas.push(x));
+    for (let x = 2; x < 21; x += 2) {
+        mas.push(x);
+    }
     return mas;
 }
 
 //Напишите функцию, считающую сумму чисел до заданного используя цикл
 function sumTo(n) {
     let sum = 0;
-    for (let x = 1; x <= n; ++x, sum += x);
+    for (let x = 1; x <= n; ++x) {
+        sum += x;
+    }
     return sum;
 }
 
@@ -107,15 +111,15 @@ function deepEqual(firstObject, secondObject) {
     const arr2 = Object.getOwnPropertyNames(secondObject);
     if (arr1.length !== arr2.length) return false;
     if (arr1.length === 0) return Object.is(firstObject, secondObject);
-    for (let i = 0; i < arr1.length; i++) {
-        const t = arr1[i];
-        const f =
-            typeof firstObject[t] === 'object' &&
-            typeof secondObject[t] === 'object' &&
-            firstObject[t] !== null;
+    for (let i of arr1) {
+        const template = i;
+        const flag =
+            typeof firstObject[template] === 'object' &&
+            typeof secondObject[template] === 'object' &&
+            firstObject[template] !== null;
         if (
-            (!f && firstObject[t] !== secondObject[t]) ||
-            (f && !deepEqual(firstObject[t], secondObject[t]))
+            (!flag && firstObject[template] !== secondObject[template]) ||
+            (flag && !deepEqual(firstObject[template], secondObject[template]))
         )
             return false;
     }
